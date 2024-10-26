@@ -61,7 +61,7 @@ resource "aws_eks_cluster" "example" {
 
 # Create IAM Role for EKS Node Group
 resource "aws_iam_role" "example1" {
-  name = "eks-node-group-cloud"
+  name = "eks-node-group-cloud-009"
 
   assume_role_policy = jsonencode({
     Statement = [{
@@ -94,7 +94,7 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEC2ContainerRegistryRea
 # Create EKS Node Group
 resource "aws_eks_node_group" "example" {
   cluster_name    = aws_eks_cluster.example.name
-  node_group_name = "Node-cloud"
+  node_group_name = "Node-cloud-009"
   node_role_arn   = aws_iam_role.example1.arn
 
   # Select subnets in at least two different AZs
