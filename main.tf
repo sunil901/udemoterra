@@ -109,7 +109,7 @@ resource "aws_eks_node_group" "example" {
     min_size     = 1
   }
 
-  instance_types = ["t2.small"]
+  instance_types = ["t3a.small"]
 
   # Ensure IAM Role permissions are created before EKS Node Group creation
   depends_on = [
