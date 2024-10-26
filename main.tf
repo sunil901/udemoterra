@@ -106,7 +106,7 @@ resource "aws_eks_node_group" "example" {
     data.aws_subnets.public.ids[0],  # Subnet in AZ 1
     data.aws_subnets.public.ids[1],  # Subnet in AZ 2
   ]
-  ami_type = "ami-05f4d8898209c4f55"
+  
   
   scaling_config {
     desired_size = 1
