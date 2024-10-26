@@ -93,7 +93,8 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEC2ContainerRegistryRea
 
 # Create EKS Node Group
 resource "aws_eks_node_group" "example" {
-  cluster_name    = aws_eks_cluster.example.name
+  #cluster_name    = aws_eks_cluster.example.name
+  cluster_name    = EKS_CLOUD
   node_group_name = "Node-cloud-009"
   node_role_arn   = aws_iam_role.example1.arn
 
@@ -102,14 +103,15 @@ resource "aws_eks_node_group" "example" {
     data.aws_subnets.public.ids[0],  # Subnet in AZ 1
     data.aws_subnets.public.ids[1],  # Subnet in AZ 2
   ]
-
+  ami_type = "ami-05f4d8898209c4f55"
+  
   scaling_config {
     desired_size = 1
     max_size     = 2
     min_size     = 1
   }
 
-  instance_types = ["t3a.small"]
+  instance_types = ["t2.small"]
 
   # Ensure IAM Role permissions are created before EKS Node Group creation
   depends_on = [
