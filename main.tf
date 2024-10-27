@@ -53,6 +53,7 @@ resource "aws_eks_cluster" "example" {
     subnet_ids = [
       data.aws_subnets.public.ids[0],  # Subnet in AZ 1
       data.aws_subnets.public.ids[1],  # Subnet in AZ 2
+      data.aws_subnets.public.ids[2],  # Subnet in 3
     ]
   }
 
@@ -105,6 +106,7 @@ resource "aws_eks_node_group" "example" {
   subnet_ids = [
     data.aws_subnets.public.ids[0],  # Subnet in AZ 1
     data.aws_subnets.public.ids[1],  # Subnet in AZ 2
+    data.aws_subnets.public.ids[2],  # Subnet 3
   ]
   
   
